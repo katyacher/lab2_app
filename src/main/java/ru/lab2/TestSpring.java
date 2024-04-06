@@ -2,13 +2,39 @@ package ru.lab2;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/* 
+ * Общая постановка задачи:
+
+Необходимо создать приложение, в котором будут объявлены Spring-конфигурации при помощи xml-конструкций 
+
+В каждом варианте есть сущность (класс), необходимо создать интерфейс (самостоятельно на усмотрение студента) и классы, его имплементирующие. Объекты классов, имплементирующих данный интерфейс, будут передаваться в качестве зависимостей. Выполнить связывание и получить объекты из контекста. Продемонстрировать результаты в простейшем консольном приложении. 
+
+Необходимо:
+
+   1. Реализовать внедрение простых значений через конструктор +
+   2. Реализовать внедрение зависимости по ссылке через конструктор+
+   3. Интерфейс должен содержать как минимум один метод +
+   4. Классы, имплементирующие интерфейс, должны содержать как минимум одно поле (у разных классов - разные) +
+   5. Зависимый класс должен содержать метод, который на основе вызова метода у зависимости выводил бы некоторое сообщение в консоль (Например для класса Автомобиля, в который внедряются Двигатели. Они могут выдавать свою мощность, а автомобиль может выводить сообщение, с какой скоростью он может двигаться).+
+   6. Реализовать внедрение простых значений из внешнего файла через setter
+*/
+
 public class TestSpring {
 	
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new
-		ClassPathXmlApplicationContext("resources/applicationContext.xml");
-		TestBean testBean = context.getBean("testBean", TestBean.class);
-		System.out.println(testBean.getName());
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("resources/applicationContext.xml");
+		
+		// внедрение простых значений через конструктор
+		Pen item = context.getBean("penBean", Pen.class);
+		System.out.println(item.getType() + " in the pencil case");
+		
+		//внедрение зависимости по ссылке через конструктор
+		PencilCase pencilCase = context.getBean("pencilCaseBean", PencilCase.class);
+		pencilCase.take_an_item();
+		
+		//внедрение простых значений из внешнего файла через setter
+		Eraser item2 = context.getBean("eraserBean", Eraser.class);
+		System.out.println(item2.getType() + " in the pencil case");
 		context.close();
 	}
 

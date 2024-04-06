@@ -6,9 +6,28 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
+
 	
-	<bean id="testBean"
-	class="ru.lab2.TestBean">
-	<constructor-arg value="NameMy"/>
+	<bean id="penBean"
+		class="ru.lab2.Pen">
+		<constructor-arg value="red"/>
 	</bean>
+	
+	
+	<bean id="itemBean"
+		class="ru.lab2.Pencil">
+		<constructor-arg value="wood"/>
+	</bean>
+	
+	<bean id="pencilCaseBean"
+		class="ru.lab2.PencilCase">
+		<constructor-arg ref="itemBean" />
+	</bean>
+	
+	<bean id="eraserBean"
+		class="ru.lab2.Eraser">
+		<property name="width" value="4" />
+		<property name="height" value="4" />
+	</bean>
+	
 	</beans>
