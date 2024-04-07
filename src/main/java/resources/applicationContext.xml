@@ -24,10 +24,12 @@
 		<constructor-arg ref="itemBean" />
 	</bean>
 	
+	<context:property-placeholder location="classpath:resources/eraser.properties"/>
 	<bean id="eraserBean"
 		class="ru.lab2.Eraser">
-		<property name="width" value="4" />
-		<property name="height" value="4" />
+		<property name="width" value="${Eraser.width}" />
+		<property name="height" value="3"/>
 	</bean>
+	
 	
 	</beans>

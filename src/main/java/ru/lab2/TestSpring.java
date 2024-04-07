@@ -32,7 +32,7 @@ public class TestSpring {
 		PencilCase pencilCase = context.getBean("pencilCaseBean", PencilCase.class);
 		pencilCase.take_an_item();
 		
-		//внедрение простых значений из внешнего файла через setter
+		//внедрение простых значений через setter непосредственно в xml и из внешнего файла
 		Eraser item2 = context.getBean("eraserBean", Eraser.class);
 		System.out.println(item2.getType() + " in the pencil case");
 		context.close();
