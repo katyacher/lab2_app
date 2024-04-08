@@ -7,28 +7,34 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	
+	<!-- Объявление класса Pen. Внедрение простого значения через конструктор -->
 	<bean id="penBean"
 		class="ru.lab2.Pen">
 		<constructor-arg value="red"/>
 	</bean>
 	
-	
+	<!-- Объявление класса Pencil. Внедрение простого значения через конструктор -->
 	<bean id="itemBean"
 		class="ru.lab2.Pencil">
 		<constructor-arg value="wood"/>
 	</bean>
 	
+	<!-- Объявление класса PencilCase. Внедрение зависимости по ссылке через конструктор -->
 	<bean id="pencilCaseBean"
 		class="ru.lab2.PencilCase">
-		<constructor-arg ref="itemBean" />
+		<constructor-arg ref="itemBean" /> <!-- ссылка на class Pencil-->
 	</bean>
 	
+	<!-- Подстановка переменных-заполнителей. Механизм подстановки переменных-заполнителей будет извлекать значения свойств из файла resources/eraser.properties-->
 	<context:property-placeholder location="classpath:resources/eraser.properties"/>
+	
+	<!-- Объявление класса Eraser. Внедрение простых значений через setter -->
 	<bean id="eraserBean"
 		class="ru.lab2.Eraser">
-		<property name="width" value="${Eraser.width}" />
-		<property name="height" value="3"/>
+		<!-- вызов метода setWidth() со значением из внешнего файла свойств resources/eraser.properties-->
+		<property name="width" value="${Eraser.width}" /> 
+		<!--вызов метода setHeigth() со значением "3" параметра value-->
+		<property name="height" value="3"/> 
 	</bean>
 	
 	

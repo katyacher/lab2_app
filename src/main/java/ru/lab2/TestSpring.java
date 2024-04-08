@@ -28,7 +28,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestSpring {
 	
 	public static void main(String[] args) {
-		
+		/** Создаем объект класса  ClassPathXmlApplicationContext, передавая в конструктор путь к файлу определения 
+		 * контекста приложения applicationContext.xml   */ 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("resources/applicationContext.xml");
 		
 		/** внедрение простых значений через конструктор */
@@ -39,9 +40,10 @@ public class TestSpring {
 		PencilCase pencilCase = context.getBean("pencilCaseBean", PencilCase.class);
 		pencilCase.take_an_item();
 		
-		/** внедрение простых значений через setter непосредственно в xml и из внешнего файла */
+		/** внедрение простых значений через setter из внешнего файла */
 		Eraser item2 = context.getBean("eraserBean", Eraser.class);
 		System.out.println(item2.getType() + " in the pencil case");
+		
 		context.close();
 	}
 
