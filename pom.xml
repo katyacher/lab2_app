@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.myapp</groupId>
+  <groupId>ru.lab2</groupId>
   <artifactId>lab2-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -31,14 +31,14 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-core</artifactId>
-	    <version>6.1.5</version>
+	    <version>5.2.25.RELEASE</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-beans</artifactId>
-	    <version>6.1.5</version>
+	    <version>5.2.25.RELEASE</version>
 	</dependency>
 
 
@@ -46,7 +46,7 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
-	    <version>6.1.5</version>
+	    <version>5.2.25.RELEASE</version>
 	</dependency>
 
 
@@ -56,6 +56,11 @@
     <finalName>lab2-app</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+		  <plugin>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+		  
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
@@ -87,5 +92,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    
+     <resources>
+		<resource>
+			<directory>src/main/java</directory>
+			<includes>
+				<include> resources/applicationContext.xml</include>
+				<include> resources/eraser.properties</include>
+			</includes>
+		</resource>
+		</resources>
   </build>
 </project>
